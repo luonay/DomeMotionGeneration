@@ -1,0 +1,104 @@
+=====
+2016-10-31 11:38:41.563200
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 11:40:16.637699
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 18165
+=====
+2016-10-31 13:50:48.670280
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 13:55:30.720895
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 13:55:48.277136
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 19647
+=====
+2016-10-31 14:04:01.010473
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 19811
+=====
+2016-10-31 14:14:39.455943
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 14:18:22.676319
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 14:20:14.129371
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 14:20:28.499614
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 14:23:01.385269
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 14:24:45.650304
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+/home/luna/intermocap/h3.6m/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 21192
+=====
+2016-10-31 14:25:51.085739
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+/home/luna/intermocap/h3.6m/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 21225
+=====
+2016-10-31 14:26:42.295444
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+/home/luna/intermocap/h3.6m/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 21252
+=====
+2016-10-31 14:27:53.111576
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 14:29:18.279748
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 21:32:46.265909
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 21:33:15.741739
+luna-XPS-8500
+mode=FAST_RUN,device=cpu,floatX=float32
+=====
+2016-10-31 21:35:04.826729
+luna-XPS-8500
+mode=FAST_RUN,device=gpu0,floatX=float32
+=====
+2016-10-31 21:38:17.972859
+luna-XPS-8500
+mode=FAST_RUN,device=gpu0,floatX=float32
+=====
+2016-10-31 21:55:47.596723
+luna-XPS-8500
+mode=FAST_RUN,device=gpu0,floatX=float32
+=====
+2016-10-31 22:37:25.259838
+luna-XPS-8500
+mode=FAST_RUN,device=gpu0,floatX=float32
+/home/luna/intermocap/h3.6m/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 32412
+=====
+2016-10-31 22:46:30.556070
+luna-XPS-8500
+mode=FAST_RUN,device=gpu0,floatX=float32
+/home/luna/intermocap/h3.6m/checkpoints_dra_T_150_bs_100_tg_100_ls_512_fc_256_initial_lr_0.001_clipnorm_25.0_nschd_[250,500.0,1000.0,1300.0,2000.0,2500.0,3300.0]_nrate_[0.01,0.05,0.1,0.2,0.3,0.5,0.75]_decschd_[1500.0,4500.0]_decrate_[0.1,0.1]_fs_eating_NoEdge/ 6078
+=====
+2016-11-22 12:57:17.159764
+luna-XPS-8500
+mode=FAST_RUN,device=gpu0,floatX=float32
