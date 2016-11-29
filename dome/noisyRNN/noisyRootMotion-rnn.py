@@ -1,7 +1,7 @@
 import numpy as np
 import theano
 from theano import tensor as T
-from generateTrainDataonDomeData import createTrain
+from generateRootTrainDataonDomeData import createTrain
 from neuralmodels.utils import permute
 from neuralmodels.loadcheckpoint import *
 from neuralmodels.costs import euclidean_loss 
@@ -16,7 +16,7 @@ if __name__ == '__main__':
 	num_samples = 22900 
 	len_samples = 100 
 
-	epochs = 70
+	epochs = 80
 	batch_size = 100
 	learning_rate = 1e-3
 	learning_rate_decay = 0.97
@@ -47,17 +47,17 @@ if __name__ == '__main__':
 	Y_valid = Y[:,num_train:,:]
 	
 	# Creating network layers
-	l0 = TemporalInputFeatures(size=42)
+	l0 = TemporalInputFeatures(size=45)
 	l1 = AddNoiseToInput()
-        l2 = FCLayer(activation_str='identity', size=1024)
+	l2 = LSTM(truncate_gradient=100,size=1024,weights=None,seq_output=True,rng=None,
+                skip_input=False,jump_up=False,grad_clip=True,g_low=-5.0,g_high=5.0)
 	l3 = LSTM(truncate_gradient=100,size=1024,weights=None,seq_output=True,rng=None,
                 skip_input=False,jump_up=False,grad_clip=True,g_low=-5.0,g_high=5.0)
 	l4 = LSTM(truncate_gradient=100,size=1024,weights=None,seq_output=True,rng=None,
                 skip_input=False,jump_up=False,grad_clip=True,g_low=-5.0,g_high=5.0)
-	l5 = LSTM(truncate_gradient=100,size=1024,weights=None,seq_output=True,rng=None,
+	l5 = LSTM(truncate_gradient=100,size=45,weights=None,seq_output=True,rng=None,
                 skip_input=False,jump_up=False,grad_clip=True,g_low=-5.0,g_high=5.0)
-        l6 = FCLayer(activation_str='identity', size=42)
-	layers = [l0, l1, l2, l3, l4, l5, l6]
+	layers = [l0, l1, l2, l3, l4, l5]
 	trY = T.tensor3(dtype=theano.config.floatX)
 	lr = T.scalar()
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 	print('size of input X_tr:{0}'.format(X_tr.shape))
 	print('size of input Y_tr:{0}'.format(Y_tr.shape))
 	
-        net_struct = 'Noise-FC1024-LSTM1024-LSTM1024-LSTM1024-FC42'
+        net_struct = 'Root-Noise-LSTM1024-LSTM1024-LSTM1024-LSTM42'
         hyper = '-ns' + str(num_samples) + '-ep' + str(epochs) + '-lrd' + str(learning_rate_decay) + '-wd' + str(weight_decay_) + '-noise' + str(len(noise_rate_schedule_))
         checkpointDir = '/home/luna/ssp/srnn/dome/noisyRNN/checkpoints/' + net_struct + hyper + '/'
 	if not os.path.exists(checkpointDir):

@@ -1,7 +1,7 @@
 import numpy as np
 import theano
 from theano import tensor as T
-from generateTrainDataonDomeData import createTrain
+from generateTrainValidDataonDomeData import createTrain
 from neuralmodels.utils import permute
 from neuralmodels.loadcheckpoint import *
 from neuralmodels.costs import euclidean_loss 
@@ -12,11 +12,15 @@ import os
 import scipy.io as sio
 
 if __name__ == '__main__':
+	#number of validation samples, each of length 1000. Only first /len_train_samples/ frames are fed into network 
+	num_valid_samples = 200 
+	len_valid_samples = 100
 	#total number of samples  = 22900
-	num_samples = 22900 
-	len_samples = 100 
+	num_train_samples = 300 - num_valid_samples
+	len_train_samples = 100
+	data_shift = 50 #ajust shift size to generate more/less training samples
 
-	epochs = 70
+	epochs = 1
 	batch_size = 100
 	learning_rate = 1e-3
 	learning_rate_decay = 0.97
@@ -26,12 +30,14 @@ if __name__ == '__main__':
 
 	datadir = '/home/luna/ssp/data/single_original'
 	
-	[X,Y]= createTrain(datadir,num_samples,len_samples)
+	[X,Y,X_valid_gt, Y_valid_gt]= createTrain(datadir,num_train_samples,len_train_samples, num_valid_samples, len_valid_samples, data_shift)
 	print('size of raw input X:{0}'.format(X.shape))
 	print('size of raw label Y:{0}'.format(Y.shape))
-	num_samples = X.shape[1]
-	num_validation = 50
-	num_train = num_samples - num_validation
+	#update true num_train_samples
+	num_train_samples = X.shape[1]
+	num_valid_samples = X_valid_gt.shape[1]
+	#num_validation = 50
+	#num_train = num_samples - num_validation
 	max_iter = X.shape[1]/batch_size * epochs
 	iter_per_epoch = X.shape[1]/batch_size
 
@@ -41,10 +47,13 @@ if __name__ == '__main__':
 	permutation = permute(num_samples)
 	X = X[:,permutation,:]
 	Y = Y[:,permutation,:]
-	X_tr = X[:,:num_train,:]
-	Y_tr = Y[:,:num_train,:]
-	X_valid = X[:,num_train:,:]
-	Y_valid = Y[:,num_train:,:]
+	#X_tr = X[:,:num_train,:]
+	#Y_tr = Y[:,:num_train,:]
+	permuation_valid = permute(num_valid_samples)
+	X_valid_gt = X_valid_gt[:,permutation_valid,:]
+	Y_valid_gt = X_valid_gt[:,permutation_valid,:]
+	X_valid = X_valid_gt[:len_train_samples,:,:]
+	Y_valid = Y_valid_gt[:len_train_samples,:,:]
 	
 	# Creating network layers
 	l0 = TemporalInputFeatures(size=42)
@@ -78,8 +87,8 @@ if __name__ == '__main__':
 	sequence_predict = np.concatenate((X_valid, out), axis=0)
 
 	print "predicted sequence shape:{0}".format(sequence_predict.shape)
-	predictionFilename = 'genNoiseMotion.mat'
-	sio.savemat(os.path.join(checkpointDir, predictionFilename), {'sequence_predict':sequence_predict})
+	predictionFilename = 'genNoiseMotionwithGT.mat'
+	sio.savemat(os.path.join(checkpointDir, predictionFilename), {'sequence_predict':sequence_predict, 'ground_truth':X_valid_gt})
 
 	plot_loss(os.path.join(checkpointDir, 'logfile'),'train')
 	plot_loss(os.path.join(checkpointDir, 'logfile'),'test')
