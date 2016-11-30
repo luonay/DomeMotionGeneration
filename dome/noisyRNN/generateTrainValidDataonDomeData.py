@@ -17,7 +17,7 @@ def sample_data(input_data,len_samples,data_shift):
 			#break
 		s_t = int(i*data_shift)
 		e_t = int(i*data_shift + len_samples + 1)
-		sample_data = input_data[s_t:e_t, 3:]
+		sample_data = input_data[s_t:e_t, :]
 		#overall_data.append([class_ids[x] fddor x in sample_text])
 		overall_data.append(sample_data)
 		i = i + 1
@@ -37,7 +37,7 @@ def createTrain(datadir,num_train_samples,len_train_samples, num_valid_samples, 
 			print('scene {0} has {1} validation subjects'.format(scene, len(val_subjects)))
 			for sub in val_subjects:
 				filename = os.path.join(datadir, scene,sub)
-				overall_valid_data_sub = createTrainSubject(filename, len_valid_samples, 0)
+				overall_valid_data_sub = createTrainSubject(filename, len_valid_samples, data_shift)
 				overall_valid_data.extend(overall_valid_data_sub)
 				if len(overall_valid_data)>num_valid_samples:
 					overall_valid_data = overall_valid_data[:num_valid_samples]
@@ -76,11 +76,12 @@ def createTrainSubject(filename, len_samples, data_shift):
 
 if __name__=="__main__":
 	datadir = '/home/luna/ssp/data/single_original'
-	[train_data, label_data] = createTrain(datadir,25000,25)
+	[train_data, train_label, valid_data, valid_label] = createTrain(datadir,250,25,10,100,5)
 	print(train_data.shape)
-	print(label_data.shape) 
-	print(train_data[1,1,1:10] - label_data[1,0,1:10])
-	print(train_data[100,1,1:10] - label_data[100,0,1:10])
-	print(np.linalg.norm(train_data[100,5,3:6]))	
-	print(np.linalg.norm(train_data[200,5,6:9]))	
-	print(np.linalg.norm(train_data[300,8,9:12]))	
+	print(train_label.shape)
+	print(valid_data.shape)
+	print(valid_label.shape) 
+	print(train_data[2,1,1:10] - train_label[1,1,1:10])
+	print(train_data[24,1,1:10] - train_label[23,1,1:10])
+	print(np.linalg.norm(train_data[3,100,3:6]))	
+	print(np.linalg.norm(train_data[24,200,6:9]))	
